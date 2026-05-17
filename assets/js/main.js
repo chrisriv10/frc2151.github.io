@@ -72,6 +72,12 @@
 
 					var	$this = $(this),
 						id = $this.attr('href'),
+						$section;
+
+					// External link? Bail.
+						if (id.charAt(0) != '#')
+							return;
+
 						$section = $(id);
 
 					// No section for this link? Bail.
@@ -127,6 +133,27 @@
 				return 0;
 
 			}
+		});
+
+	// Replay section animations when sidebar links jump to them.
+		$('a[href="#one"], a[href="#three"]').on('click', function() {
+
+			var $target;
+
+			if ($(this).attr('href') == '#one')
+				$target = $('#one.spotlights > section');
+			else
+				$target = $('#three.wrapper.fade-up');
+
+			if ($target.length < 1)
+				return;
+
+			$target.addClass('inactive');
+
+			window.setTimeout(function() {
+				$target.removeClass('inactive');
+			}, 900);
+
 		});
 
 	// Spotlights.
