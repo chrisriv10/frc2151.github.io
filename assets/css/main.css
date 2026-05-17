@@ -32,6 +32,27 @@ body {
 	line-height: 1;
 }
 
+	body #sidebar,
+	body #wrapper,
+	body #header,
+	body #footer {
+		-moz-transition: opacity 0.35s ease, -moz-transform 0.35s ease;
+		-webkit-transition: opacity 0.35s ease, -webkit-transform 0.35s ease;
+		-ms-transition: opacity 0.35s ease, -ms-transform 0.35s ease;
+		transition: opacity 0.35s ease, transform 0.35s ease;
+	}
+
+	body.is-page-transitioning #sidebar,
+	body.is-page-transitioning #wrapper,
+	body.is-page-transitioning #header,
+	body.is-page-transitioning #footer {
+		opacity: 0;
+		-moz-transform: translateY(0.5em);
+		-webkit-transform: translateY(0.5em);
+		-ms-transform: translateY(0.5em);
+		transform: translateY(0.5em);
+	}
+
 ol, ul {
 	list-style: none;
 }
@@ -3636,10 +3657,10 @@ input, select, textarea {
 			-webkit-justify-content: center;
 			-ms-justify-content: center;
 			justify-content: center;
-			-moz-transform: translateY(0);
-			-webkit-transform: translateY(0);
-			-ms-transform: translateY(0);
-			transform: translateY(0);
+			-moz-transform: translateY(-1.25em);
+			-webkit-transform: translateY(-1.25em);
+			-ms-transform: translateY(-1.25em);
+			transform: translateY(-1.25em);
 			-moz-transition: opacity 1s ease;
 			-webkit-transition: opacity 1s ease;
 			-ms-transition: opacity 1s ease;
@@ -3908,6 +3929,10 @@ input, select, textarea {
 					-webkit-align-items: -webkit-stretch;
 					-ms-align-items: -ms-stretch;
 					align-items: stretch;
+					-moz-transform: none;
+					-webkit-transform: none;
+					-ms-transform: none;
+					transform: none;
 					height: inherit;
 					line-height: inherit;
 				}
@@ -4240,17 +4265,17 @@ input, select, textarea {
 
 /* Slide images */
 .intro-slide.slide1 {
-    background-image: url("../../images/2151ReefscapeWCW.jpg");
+    background-image: url("images/2151ReefscapeWCW.jpg");
     animation-delay: 0s;
 }
 
 .intro-slide.slide2 {
-    background-image: url("../../images/2151MW.png");
+    background-image: url("images/2151MW.png");
     animation-delay: 6s;
 }
 
 .intro-slide.slide3 {
-    background-image: url("../../images/2151Pit.jpg");
+    background-image: url("images/2151Pit.jpg");
     animation-delay: 12s;
 }
 

@@ -49,7 +49,7 @@
 
 			var $sidebar_a = $sidebar.find('a');
 
-			$sidebar_a
+			$sidebar_a.filter('[href^="#"]')
 				.addClass('scrolly')
 				.on('click', function() {
 
@@ -133,6 +133,28 @@
 				return 0;
 
 			}
+		});
+
+	// Fade between local pages.
+		$('a[href$=".html"]').on('click', function(event) {
+
+			var $this = $(this),
+				href = $this.attr('href');
+
+			if (!href
+			||	$this.attr('target') == '_blank'
+			||	href.charAt(0) == '#'
+			||	href.indexOf('://') >= 0
+			||	href == window.location.pathname.split('/').pop())
+				return;
+
+			event.preventDefault();
+			$body.addClass('is-page-transitioning');
+
+			window.setTimeout(function() {
+				window.location.href = href;
+			}, 350);
+
 		});
 
 	// Replay section animations when sidebar links jump to them.
